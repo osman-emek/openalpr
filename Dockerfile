@@ -11,7 +11,10 @@ run apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     liblog4cplus-dev \
     libopencv-dev \
     libtesseract-dev \
-    wget
+    wget \
+    software-properties-common \
+    python3 \
+    python3-pip
 
 # Copy all data
 copy . /srv/openalpr
@@ -25,6 +28,18 @@ run cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_SYSCONFDIR:PATH=/etc 
     make -j2 && \
     make install
 
-workdir /data
+run mkdir /opt/app
+workdir /opt/app
+copy ./code/main.py /opt/app/main.py
+#run python -m venv /venv
+#env PATH="/venv/bin:$PATH"
+run pip3 install --upgrade pip
+run pip3 install openalpr
+run pip3 install tornado
+run pip3 install numpy
 
-entrypoint ["alpr"]
+expose 7878
+
+cmd ["python3", "/opt/app/main.py"]
+
+#entrypoint ["alpr"]

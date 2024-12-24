@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  alprserver:
+    container_name: alprserver
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "7878:7878"
+    environment:
+      PORT: 7878
