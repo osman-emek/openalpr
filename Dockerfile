@@ -49,6 +49,6 @@ copy ./code/requirements.txt /opt/app/requirements.txt
 run pip3 install --no-cache-dir fastapi
 run pip3 install --no-cache-dir fastapi-cli
 
-expose 7878
+expose 8181
 
-cmd ["fastapi", "run", "/opt/app/main.py","--port","7878","--workers","4","--host","0.0.0.0"]
+cmd ["fastapi", "run", "/opt/app/main.py","--port","8181","--workers","4","--host","0.0.0.0"]
