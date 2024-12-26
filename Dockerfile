@@ -44,7 +44,6 @@ run python3.8 -m pip install --no-cache-dir pip --upgrade pip
 run mkdir /opt/app
 workdir /opt/app
 copy ./code/main.py /opt/app/main.py
-copy ./code/requirements.txt /opt/app/requirements.txt
 
 run pip3 install --no-cache-dir fastapi
 run pip3 install --no-cache-dir fastapi-cli
